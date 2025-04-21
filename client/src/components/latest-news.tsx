@@ -35,13 +35,11 @@ export default function LatestNews() {
           </p>
         )}
         
-        <Link href="/news">
-          <a className="text-primary dark:text-secondary hover:underline text-sm font-medium flex items-center justify-center mt-4">
-            عرض جميع الأخبار
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2 rtl:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </a>
+        <Link href="/news" className="text-primary dark:text-secondary hover:underline text-sm font-medium flex items-center justify-center mt-4">
+          عرض جميع الأخبار
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2 rtl:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
         </Link>
       </CardContent>
     </Card>

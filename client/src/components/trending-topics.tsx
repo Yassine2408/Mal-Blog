@@ -62,8 +62,8 @@ export default function TrendingTopics() {
               <p className="text-gray-500 dark:text-gray-400 text-sm mb-2 line-clamp-2">
                 {article.excerpt}
               </p>
-              <Link href={`/article/${article.slug}`}>
-                <a className="text-primary dark:text-secondary text-sm hover:underline">اقرأ المزيد</a>
+              <Link href={`/article/${article.slug}`} className="text-primary dark:text-secondary text-sm hover:underline">
+                اقرأ المزيد
               </Link>
             </div>
           </div>

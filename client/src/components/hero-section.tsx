@@ -71,17 +71,18 @@ export default function HeroSection() {
                 </div>
               </div>
               <div className="pt-2">
-                <Link href={`/article/${featuredArticle.slug}`}>
-                  <Button 
-                    size="lg" 
-                    className="bg-accent hover:bg-accent/90 text-white"
-                  >
+                <Button 
+                  size="lg" 
+                  className="bg-accent hover:bg-accent/90 text-white"
+                  asChild
+                >
+                  <Link href={`/article/${featuredArticle.slug}`}>
                     قراءة المقال
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2 rtl:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                     </svg>
-                  </Button>
-                </Link>
+                  </Link>
+                </Button>
               </div>
             </div>
             <div className="lg:col-span-2 relative">
@@ -98,11 +99,11 @@ export default function HeroSection() {
           <div className="text-center py-12">
             <h2 className="text-2xl font-bold mb-4">لا توجد مقالات مميزة حالياً</h2>
             <p className="mb-6">تفقد المقالات الأخرى من خلال الضغط على الزر أدناه</p>
-            <Link href="/category/all">
-              <Button className="bg-accent hover:bg-accent/90 text-white">
+            <Button className="bg-accent hover:bg-accent/90 text-white" asChild>
+              <Link href="/category/all">
                 تصفح المقالات
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </div>
         )}
       </div>
