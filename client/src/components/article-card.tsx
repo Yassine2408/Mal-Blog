@@ -37,12 +37,10 @@ export default function ArticleCard({
           </Badge>
         </div>
         <CardContent className="p-6">
-          <Link href={`/article/${article.slug}`}>
-            <a className="block">
-              <h3 className="font-almarai font-bold text-2xl mb-2 text-gray-900 dark:text-white hover:text-primary dark:hover:text-secondary transition-colors">
-                {article.title}
-              </h3>
-            </a>
+          <Link href={`/article/${article.slug}`} className="block">
+            <h3 className="font-almarai font-bold text-2xl mb-2 text-gray-900 dark:text-white hover:text-primary dark:hover:text-secondary transition-colors">
+              {article.title}
+            </h3>
           </Link>
           <p className="text-gray-600 dark:text-gray-300 mb-4">
             {article.excerpt}

@@ -56,13 +56,11 @@ export default function Home() {
         <section className="mb-16">
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-2xl font-almarai font-bold text-dark-darker dark:text-white">أحدث المقالات</h2>
-            <Link href="/category/all">
-              <a className="text-primary dark:text-secondary hover:underline flex items-center">
-                عرض المزيد
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2 rtl:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </a>
+            <Link href="/category/all" className="text-primary dark:text-secondary hover:underline flex items-center">
+              عرض المزيد
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2 rtl:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
             </Link>
           </div>
 
@@ -121,13 +119,11 @@ export default function Home() {
         <section className="mb-16">
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-2xl font-almarai font-bold text-dark-darker dark:text-white">الأكثر قراءة</h2>
-            <Link href="/category/all">
-              <a className="text-primary dark:text-secondary hover:underline flex items-center">
-                عرض المزيد
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2 rtl:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </a>
+            <Link href="/category/all" className="text-primary dark:text-secondary hover:underline flex items-center">
+              عرض المزيد
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2 rtl:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
             </Link>
           </div>
 
@@ -159,12 +155,10 @@ export default function Home() {
                     <span className="inline-block bg-primary text-white text-xs font-bold px-2 py-1 rounded-md mb-2">
                       {article.category.name}
                     </span>
-                    <Link href={`/article/${article.slug}`}>
-                      <a className="block">
-                        <h3 className="font-almarai font-bold text-xl mb-2 text-dark-darker dark:text-white hover:text-primary dark:hover:text-secondary transition-colors">
-                          {article.title}
-                        </h3>
-                      </a>
+                    <Link href={`/article/${article.slug}`} className="block">
+                      <h3 className="font-almarai font-bold text-xl mb-2 text-dark-darker dark:text-white hover:text-primary dark:hover:text-secondary transition-colors">
+                        {article.title}
+                      </h3>
                     </Link>
                     <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">{article.excerpt}</p>
                     <div className="flex items-center justify-between">
