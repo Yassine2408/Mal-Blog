@@ -100,18 +100,13 @@ export default function ArticleCard({
   // Default card
   return (
     <Card className={cn("overflow-hidden article-card border-0 shadow-md", className)}>
-      <div className="relative">
+      <div className="relative w-full h-48 overflow-hidden rounded-t-xl bg-gray-100 dark:bg-gray-800">
         <img 
           src={article.featuredImage || "https://placehold.co/500x300/0C6E5D/FFF?text=مالتك"} 
           alt={article.title} 
-          className="w-full h-48 object-cover"
+          className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" 
+          loading="lazy"
         />
-        <Badge 
-          className="absolute top-4 right-4" 
-          variant="secondary"
-        >
-          {article.category.name}
-        </Badge>
       </div>
       <CardContent className="p-6">
         <Link href={`/article/${article.slug}`} className="block">

@@ -12,13 +12,13 @@ function ToolCard({ tool }: ToolCardProps) {
   const getIcon = () => {
     switch (tool.icon) {
       case 'calculator':
-        return <Calculator className="text-xl" />;
+        return <Calculator className="h-6 w-6" />;
       case 'piggy-bank':
-        return <PiggyBank className="text-xl" />;
+        return <PiggyBank className="h-6 w-6" />;
       case 'chart-pie':
-        return <ChartPie className="text-xl" />;
+        return <ChartPie className="h-6 w-6" />;
       default:
-        return <Calculator className="text-xl" />;
+        return <Calculator className="h-6 w-6" />;
     }
   };
 

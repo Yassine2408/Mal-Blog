@@ -27,13 +27,23 @@ export default function Header({ transparent = false }: HeaderProps) {
           {/* Logo and primary navigation */}
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
-              <Link href="/" className={cn(
-                "font-almarai font-bold text-2xl",
-                transparent 
-                  ? "text-white" 
-                  : "text-primary dark:text-secondary"
-              )}>
-                مال<span className="text-accent">تك</span>
+              <Link href="/" className="flex items-center gap-2">
+                <img 
+                  src="/logo.svg" 
+                  alt="مالتك" 
+                  className={cn(
+                    "h-8 w-auto",
+                    transparent ? "filter brightness-0 invert" : ""
+                  )}
+                />
+                <span className={cn(
+                  "font-almarai font-bold text-2xl",
+                  transparent 
+                    ? "text-white" 
+                    : "text-primary dark:text-secondary"
+                )}>
+                  مال<span className="text-accent">تك</span>
+                </span>
               </Link>
             </div>
             <div className="hidden sm:mr-6 sm:flex sm:space-x-8 sm:space-x-reverse">
