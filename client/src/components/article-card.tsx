@@ -102,10 +102,14 @@ export default function ArticleCard({
     <Card className={cn("overflow-hidden article-card border-0 shadow-md", className)}>
       <div className="relative w-full h-48 overflow-hidden rounded-t-xl bg-gray-100 dark:bg-gray-800">
         <img 
-          src={article.featuredImage || "https://placehold.co/500x300/0C6E5D/FFF?text=مالتك"} 
+          src={article.featuredImage || `/placeholders/article-${Math.floor(Math.random() * 3) + 1}.jpg`} 
           alt={article.title} 
           className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" 
           loading="lazy"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = '/placeholders/article-default.jpg';
+          }}
         />
       </div>
       <CardContent className="p-6">

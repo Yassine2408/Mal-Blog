@@ -11,7 +11,7 @@ export default function HeroSection() {
   const { data: featuredArticles, isLoading } = useQuery<ArticleWithRelations[]>({
     queryKey: ['/api/articles/featured?limit=1'],
   });
-  
+
   // Process the featured article outside of the query
   const featuredArticle = featuredArticles && 
     featuredArticles.length > 0 && 
@@ -57,7 +57,7 @@ export default function HeroSection() {
               </p>
               <div className="flex items-center gap-4">
                 <Avatar className="h-12 w-12 border-2 border-white">
-                  <AvatarImage src={featuredArticle.author.avatar} alt={featuredArticle.author.fullName} />
+                  <AvatarImage src={featuredArticle.author.avatar || '/placeholder-avatar.png'} alt={featuredArticle.author.fullName} />
                   <AvatarFallback className="bg-primary-light text-white">
                     {featuredArticle.author.fullName.charAt(0)}
                   </AvatarFallback>
@@ -88,7 +88,7 @@ export default function HeroSection() {
             <div className="lg:col-span-2 relative">
               <div className="rounded-xl overflow-hidden shadow-xl transform lg:-translate-y-4 lg:translate-x-4">
                 <img 
-                  src={featuredArticle.featuredImage || "https://placehold.co/800x500/0C6E5D/FFF?text=مالتك"} 
+                  src={featuredArticle.featuredImage || "/placeholder-image.jpg"} 
                   alt={featuredArticle.title} 
                   className="w-full h-64 md:h-80 object-cover" 
                 />
@@ -107,7 +107,7 @@ export default function HeroSection() {
           </div>
         )}
       </div>
-      
+
       {/* Decorative Elements */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full overflow-hidden opacity-10 z-0">
         <ChartLine className="text-9xl absolute top-1/4 left-1/4" />
