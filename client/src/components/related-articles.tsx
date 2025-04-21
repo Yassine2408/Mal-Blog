@@ -10,8 +10,18 @@ interface RelatedArticlesProps {
 }
 
 export default function RelatedArticles({ articleId, limit = 3 }: RelatedArticlesProps) {
-  const { data: relatedArticles, isLoading } = useQuery<ArticleWithRelations[]>({
+  const { data: relatedArticles, isLoading, isError } = useQuery<ArticleWithRelations[]>({
     queryKey: [`/api/articles/${articleId}/related?limit=${limit}`],
+    select: (data) => {
+      // Make sure all related articles have the required data
+      return data.filter(article => 
+        article && 
+        article.author && 
+        article.category && 
+        article.author.fullName && 
+        article.category.name
+      );
+    }
   });
   
   return (

@@ -16,6 +16,10 @@ export default function ArticleCard({
   variant = 'default',
   className 
 }: ArticleCardProps) {
+  // Safety check to ensure all required properties exist
+  if (!article || !article.author || !article.category) {
+    return null;
+  }
   if (variant === 'featured') {
     return (
       <Card className={cn("overflow-hidden article-card border-0", className)}>

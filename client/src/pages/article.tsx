@@ -121,30 +121,40 @@ export default function Article() {
                 </h1>
                 
                 <div className="flex flex-wrap items-center text-sm text-gray-500 dark:text-gray-400 mb-8 gap-y-2">
-                  <div className="flex items-center ml-6">
-                    <Calendar className="h-4 w-4 ml-1" />
-                    <span>{formatDate(article.publishedAt)}</span>
-                  </div>
-                  <div className="flex items-center ml-6">
-                    <Clock className="h-4 w-4 ml-1" />
-                    <span>{article.readingTime} دقيقة للقراءة</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Eye className="h-4 w-4 ml-1" />
-                    <span>{article.views} مشاهدة</span>
-                  </div>
+                  {article.publishedAt && (
+                    <div className="flex items-center ml-6">
+                      <Calendar className="h-4 w-4 ml-1" />
+                      <span>{formatDate(article.publishedAt)}</span>
+                    </div>
+                  )}
+                  {article.readingTime && (
+                    <div className="flex items-center ml-6">
+                      <Clock className="h-4 w-4 ml-1" />
+                      <span>{article.readingTime} دقيقة للقراءة</span>
+                    </div>
+                  )}
+                  {article.views !== undefined && article.views !== null && (
+                    <div className="flex items-center">
+                      <Eye className="h-4 w-4 ml-1" />
+                      <span>{article.views} مشاهدة</span>
+                    </div>
+                  )}
                 </div>
                 
                 <div className="flex items-center justify-between mb-6 pb-6 border-b border-gray-200 dark:border-gray-700">
                   <div className="flex items-center space-x-4 space-x-reverse">
-                    <Avatar className="h-12 w-12">
-                      <AvatarImage src={article.author.avatar} alt={article.author.fullName} />
-                      <AvatarFallback>{article.author.fullName.charAt(0)}</AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <p className="font-medium text-gray-900 dark:text-white">{article.author.fullName}</p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">كاتب في مالتك</p>
-                    </div>
+                    {article.author && (
+                      <>
+                        <Avatar className="h-12 w-12">
+                          <AvatarImage src={article.author.avatar || undefined} alt={article.author.fullName} />
+                          <AvatarFallback>{article.author.fullName ? article.author.fullName.charAt(0) : '؟'}</AvatarFallback>
+                        </Avatar>
+                        <div>
+                          <p className="font-medium text-gray-900 dark:text-white">{article.author.fullName}</p>
+                          <p className="text-sm text-gray-500 dark:text-gray-400">كاتب في مالتك</p>
+                        </div>
+                      </>
+                    )}
                   </div>
                   
                   <div className="flex space-x-4 space-x-reverse">
