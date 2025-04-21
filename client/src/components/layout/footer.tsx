@@ -16,10 +16,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Logo & About */}
           <div className="space-y-4">
-            <Link href="/">
-              <a className="text-white font-almarai font-bold text-2xl">
-                مال<span className="text-accent">تك</span>
-              </a>
+            <Link href="/" className="text-white font-almarai font-bold text-2xl">
+              مال<span className="text-accent">تك</span>
             </Link>
             <p className="text-gray-400 text-sm">
               منصة متخصصة في التمويل الشخصي والتكنولوجيا المالية توفر محتوى تعليمي وأدوات مالية لمساعدتك في تحقيق أهدافك المالية.
@@ -49,28 +47,28 @@ export default function Footer() {
             <h3 className="font-almarai font-bold text-lg mb-4">روابط سريعة</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/">
-                  <a className="text-gray-400 hover:text-white transition-colors">الصفحة الرئيسية</a>
+                <Link href="/" className="text-gray-400 hover:text-white transition-colors">
+                  الصفحة الرئيسية
                 </Link>
               </li>
               <li>
-                <Link href="/category/all">
-                  <a className="text-gray-400 hover:text-white transition-colors">المقالات</a>
+                <Link href="/category/all" className="text-gray-400 hover:text-white transition-colors">
+                  المقالات
                 </Link>
               </li>
               <li>
-                <Link href="/tools">
-                  <a className="text-gray-400 hover:text-white transition-colors">الحاسبات المالية</a>
+                <Link href="/tools" className="text-gray-400 hover:text-white transition-colors">
+                  الحاسبات المالية
                 </Link>
               </li>
               <li>
-                <Link href="/news">
-                  <a className="text-gray-400 hover:text-white transition-colors">الأخبار المالية</a>
+                <Link href="/news" className="text-gray-400 hover:text-white transition-colors">
+                  الأخبار المالية
                 </Link>
               </li>
               <li>
-                <Link href="/about">
-                  <a className="text-gray-400 hover:text-white transition-colors">عن المدونة</a>
+                <Link href="/about" className="text-gray-400 hover:text-white transition-colors">
+                  عن المدونة
                 </Link>
               </li>
             </ul>
@@ -81,33 +79,33 @@ export default function Footer() {
             <h3 className="font-almarai font-bold text-lg mb-4">التصنيفات</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/category/planning">
-                  <a className="text-gray-400 hover:text-white transition-colors">التخطيط المالي</a>
+                <Link href="/category/planning" className="text-gray-400 hover:text-white transition-colors">
+                  التخطيط المالي
                 </Link>
               </li>
               <li>
-                <Link href="/category/investing">
-                  <a className="text-gray-400 hover:text-white transition-colors">الاستثمار</a>
+                <Link href="/category/investing" className="text-gray-400 hover:text-white transition-colors">
+                  الاستثمار
                 </Link>
               </li>
               <li>
-                <Link href="/category/savings">
-                  <a className="text-gray-400 hover:text-white transition-colors">التوفير</a>
+                <Link href="/category/savings" className="text-gray-400 hover:text-white transition-colors">
+                  التوفير
                 </Link>
               </li>
               <li>
-                <Link href="/category/fintech">
-                  <a className="text-gray-400 hover:text-white transition-colors">التكنولوجيا المالية</a>
+                <Link href="/category/fintech" className="text-gray-400 hover:text-white transition-colors">
+                  التكنولوجيا المالية
                 </Link>
               </li>
               <li>
-                <Link href="/category/crypto">
-                  <a className="text-gray-400 hover:text-white transition-colors">العملات الرقمية</a>
+                <Link href="/category/crypto" className="text-gray-400 hover:text-white transition-colors">
+                  العملات الرقمية
                 </Link>
               </li>
               <li>
-                <Link href="/category/realestate">
-                  <a className="text-gray-400 hover:text-white transition-colors">العقارات</a>
+                <Link href="/category/realestate" className="text-gray-400 hover:text-white transition-colors">
+                  العقارات
                 </Link>
               </li>
             </ul>
