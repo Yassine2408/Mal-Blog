@@ -27,57 +27,47 @@ export default function Header({ transparent = false }: HeaderProps) {
           {/* Logo and primary navigation */}
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
-              <Link href="/">
-                <a className={cn(
-                  "font-almarai font-bold text-2xl",
-                  transparent 
-                    ? "text-white" 
-                    : "text-primary dark:text-secondary"
-                )}>
-                  مال<span className="text-accent">تك</span>
-                </a>
+              <Link href="/" className={cn(
+                "font-almarai font-bold text-2xl",
+                transparent 
+                  ? "text-white" 
+                  : "text-primary dark:text-secondary"
+              )}>
+                مال<span className="text-accent">تك</span>
               </Link>
             </div>
             <div className="hidden sm:mr-6 sm:flex sm:space-x-8 sm:space-x-reverse">
-              <Link href="/">
-                <a className={cn(
-                  "border-b-2 flex items-center h-full px-1 pt-1 font-tajawal font-medium",
-                  transparent 
-                    ? "text-white border-white" 
-                    : "border-primary text-primary dark:text-light dark:border-secondary"
-                )}>
-                  الرئيسية
-                </a>
+              <Link href="/" className={cn(
+                "border-b-2 flex items-center h-full px-1 pt-1 font-tajawal font-medium",
+                transparent 
+                  ? "text-white border-white" 
+                  : "border-primary text-primary dark:text-light dark:border-secondary"
+              )}>
+                الرئيسية
               </Link>
-              <Link href="/category/all">
-                <a className={cn(
-                  "border-b-2 border-transparent hover:border-accent hover:text-accent flex items-center h-full px-1 pt-1 font-tajawal font-medium",
-                  transparent 
-                    ? "text-white/80 hover:text-white" 
-                    : "text-gray-500 dark:text-gray-300"
-                )}>
-                  المقالات
-                </a>
+              <Link href="/category/all" className={cn(
+                "border-b-2 border-transparent hover:border-accent hover:text-accent flex items-center h-full px-1 pt-1 font-tajawal font-medium",
+                transparent 
+                  ? "text-white/80 hover:text-white" 
+                  : "text-gray-500 dark:text-gray-300"
+              )}>
+                المقالات
               </Link>
-              <Link href="/tools">
-                <a className={cn(
-                  "border-b-2 border-transparent hover:border-accent hover:text-accent flex items-center h-full px-1 pt-1 font-tajawal font-medium",
-                  transparent 
-                    ? "text-white/80 hover:text-white" 
-                    : "text-gray-500 dark:text-gray-300"
-                )}>
-                  الحاسبات المالية
-                </a>
+              <Link href="/tools" className={cn(
+                "border-b-2 border-transparent hover:border-accent hover:text-accent flex items-center h-full px-1 pt-1 font-tajawal font-medium",
+                transparent 
+                  ? "text-white/80 hover:text-white" 
+                  : "text-gray-500 dark:text-gray-300"
+              )}>
+                الحاسبات المالية
               </Link>
-              <Link href="/about">
-                <a className={cn(
-                  "border-b-2 border-transparent hover:border-accent hover:text-accent flex items-center h-full px-1 pt-1 font-tajawal font-medium",
-                  transparent 
-                    ? "text-white/80 hover:text-white" 
-                    : "text-gray-500 dark:text-gray-300"
-                )}>
-                  عن المدونة
-                </a>
+              <Link href="/about" className={cn(
+                "border-b-2 border-transparent hover:border-accent hover:text-accent flex items-center h-full px-1 pt-1 font-tajawal font-medium",
+                transparent 
+                  ? "text-white/80 hover:text-white" 
+                  : "text-gray-500 dark:text-gray-300"
+              )}>
+                عن المدونة
               </Link>
             </div>
           </div>
@@ -141,25 +131,17 @@ export default function Header({ transparent = false }: HeaderProps) {
                     مال<span className="text-accent">تك</span>
                   </div>
                   <nav className="flex flex-col gap-3">
-                    <Link href="/">
-                      <a className="bg-primary/10 dark:bg-dark-light border-r-4 border-primary dark:border-secondary block pr-3 py-2 font-medium text-primary dark:text-secondary">
-                        الرئيسية
-                      </a>
+                    <Link href="/" className="bg-primary/10 dark:bg-dark-light border-r-4 border-primary dark:border-secondary block pr-3 py-2 font-medium text-primary dark:text-secondary">
+                      الرئيسية
                     </Link>
-                    <Link href="/category/all">
-                      <a className="hover:bg-gray-100 dark:hover:bg-dark-light hover:border-r-4 hover:border-accent block pr-3 py-2 font-medium text-gray-500 dark:text-gray-300">
-                        المقالات
-                      </a>
+                    <Link href="/category/all" className="hover:bg-gray-100 dark:hover:bg-dark-light hover:border-r-4 hover:border-accent block pr-3 py-2 font-medium text-gray-500 dark:text-gray-300">
+                      المقالات
                     </Link>
-                    <Link href="/tools">
-                      <a className="hover:bg-gray-100 dark:hover:bg-dark-light hover:border-r-4 hover:border-accent block pr-3 py-2 font-medium text-gray-500 dark:text-gray-300">
-                        الحاسبات المالية
-                      </a>
+                    <Link href="/tools" className="hover:bg-gray-100 dark:hover:bg-dark-light hover:border-r-4 hover:border-accent block pr-3 py-2 font-medium text-gray-500 dark:text-gray-300">
+                      الحاسبات المالية
                     </Link>
-                    <Link href="/about">
-                      <a className="hover:bg-gray-100 dark:hover:bg-dark-light hover:border-r-4 hover:border-accent block pr-3 py-2 font-medium text-gray-500 dark:text-gray-300">
-                        عن المدونة
-                      </a>
+                    <Link href="/about" className="hover:bg-gray-100 dark:hover:bg-dark-light hover:border-r-4 hover:border-accent block pr-3 py-2 font-medium text-gray-500 dark:text-gray-300">
+                      عن المدونة
                     </Link>
                   </nav>
                 </div>
