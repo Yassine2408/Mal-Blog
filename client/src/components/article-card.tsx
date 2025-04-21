@@ -81,20 +81,16 @@ export default function ArticleCard({
           >
             {article.category.name}
           </Badge>
-          <Link href={`/article/${article.slug}`}>
-            <a className="block">
-              <h3 className="font-almarai font-bold text-lg line-clamp-2 mb-1 hover:text-primary dark:hover:text-secondary transition-colors">
-                {article.title}
-              </h3>
-            </a>
+          <Link href={`/article/${article.slug}`} className="block">
+            <h3 className="font-almarai font-bold text-lg line-clamp-2 mb-1 hover:text-primary dark:hover:text-secondary transition-colors">
+              {article.title}
+            </h3>
           </Link>
           <p className="text-gray-500 dark:text-gray-400 text-sm mb-2 line-clamp-2">
             {article.excerpt}
           </p>
-          <Link href={`/article/${article.slug}`}>
-            <a className="text-primary dark:text-secondary text-sm hover:underline">
-              اقرأ المزيد
-            </a>
+          <Link href={`/article/${article.slug}`} className="text-primary dark:text-secondary text-sm hover:underline">
+            اقرأ المزيد
           </Link>
         </div>
       </article>
@@ -118,12 +114,10 @@ export default function ArticleCard({
         </Badge>
       </div>
       <CardContent className="p-6">
-        <Link href={`/article/${article.slug}`}>
-          <a className="block">
-            <h3 className="font-almarai font-bold text-xl mb-2 text-gray-900 dark:text-white hover:text-primary dark:hover:text-secondary transition-colors line-clamp-2">
-              {article.title}
-            </h3>
-          </a>
+        <Link href={`/article/${article.slug}`} className="block">
+          <h3 className="font-almarai font-bold text-xl mb-2 text-gray-900 dark:text-white hover:text-primary dark:hover:text-secondary transition-colors line-clamp-2">
+            {article.title}
+          </h3>
         </Link>
         <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">
           {article.excerpt}
