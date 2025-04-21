@@ -40,6 +40,28 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Get featured articles
+  app.get("/api/articles/featured", async (req, res) => {
+    try {
+      const limit = req.query.limit ? parseInt(req.query.limit as string) : 5;
+      const articles = await storage.getFeaturedArticles(limit);
+      res.json(articles);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch featured articles" });
+    }
+  });
+
+  // Get popular articles
+  app.get("/api/articles/popular", async (req, res) => {
+    try {
+      const limit = req.query.limit ? parseInt(req.query.limit as string) : 5;
+      const articles = await storage.getPopularArticles(limit);
+      res.json(articles);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch popular articles" });
+    }
+  });
+
   // Get article by slug
   app.get("/api/articles/:slug", async (req, res) => {
     try {
@@ -70,28 +92,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(articles);
     } catch (error) {
       res.status(500).json({ message: "Failed to fetch category articles" });
-    }
-  });
-
-  // Get featured articles
-  app.get("/api/articles/featured", async (req, res) => {
-    try {
-      const limit = req.query.limit ? parseInt(req.query.limit as string) : 5;
-      const articles = await storage.getFeaturedArticles(limit);
-      res.json(articles);
-    } catch (error) {
-      res.status(500).json({ message: "Failed to fetch featured articles" });
-    }
-  });
-
-  // Get popular articles
-  app.get("/api/articles/popular", async (req, res) => {
-    try {
-      const limit = req.query.limit ? parseInt(req.query.limit as string) : 5;
-      const articles = await storage.getPopularArticles(limit);
-      res.json(articles);
-    } catch (error) {
-      res.status(500).json({ message: "Failed to fetch popular articles" });
     }
   });
 

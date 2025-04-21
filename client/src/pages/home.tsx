@@ -23,11 +23,27 @@ export default function Home() {
   // Latest articles query
   const { data: latestArticles, isLoading: isLoadingLatest } = useQuery<ArticleWithRelations[]>({
     queryKey: ['/api/articles?limit=3'],
+    select: (data) => {
+      // Filter out articles with missing required properties
+      return data?.filter(article => 
+        article && 
+        article.category && 
+        article.category.name
+      ) || [];
+    }
   });
   
   // Popular articles query
   const { data: popularArticles, isLoading: isLoadingPopular } = useQuery<ArticleWithRelations[]>({
     queryKey: ['/api/articles/popular?limit=2'],
+    select: (data) => {
+      // Filter out articles with missing required properties
+      return data?.filter(article => 
+        article && 
+        article.category && 
+        article.category.name
+      ) || [];
+    }
   });
 
   return (
@@ -152,8 +168,12 @@ export default function Home() {
                     </Link>
                     <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">{article.excerpt}</p>
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-primary dark:text-secondary">{article.views} قراءة</span>
-                      <span className="text-sm text-gray-500 dark:text-gray-400">{article.readingTime} دقيقة للقراءة</span>
+                      <span className="text-sm text-primary dark:text-secondary">
+                        {article.views !== undefined && article.views !== null ? article.views : 0} قراءة
+                      </span>
+                      <span className="text-sm text-gray-500 dark:text-gray-400">
+                        {article.readingTime !== undefined && article.readingTime !== null ? article.readingTime : 5} دقيقة للقراءة
+                      </span>
                     </div>
                   </div>
                 </article>

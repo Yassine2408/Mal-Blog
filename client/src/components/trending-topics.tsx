@@ -6,6 +6,14 @@ import { ArticleWithRelations } from '@shared/schema';
 export default function TrendingTopics() {
   const { data: trendingArticles, isLoading } = useQuery<ArticleWithRelations[]>({
     queryKey: ['/api/articles/popular?limit=3'],
+    select: (data) => {
+      // Filter out articles with missing required properties
+      return data?.filter(article => 
+        article && 
+        article.category && 
+        article.category.name
+      ) || [];
+    }
   });
 
   if (isLoading) {

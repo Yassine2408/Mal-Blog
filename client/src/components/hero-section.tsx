@@ -8,10 +8,17 @@ import { ArticleWithRelations } from '@shared/schema';
 import { ChartLine, Coins, BanknoteIcon } from 'lucide-react';
 
 export default function HeroSection() {
-  const { data: featuredArticle, isLoading } = useQuery<ArticleWithRelations[]>({
+  const { data: featuredArticles, isLoading } = useQuery<ArticleWithRelations[]>({
     queryKey: ['/api/articles/featured?limit=1'],
-    select: data => data?.[0],
   });
+  
+  // Process the featured article outside of the query
+  const featuredArticle = featuredArticles && 
+    featuredArticles.length > 0 && 
+    featuredArticles[0].category && 
+    featuredArticles[0].author 
+      ? featuredArticles[0] 
+      : null;
 
   return (
     <section className="relative bg-gradient-to-l from-primary to-primary-dark text-white py-16">

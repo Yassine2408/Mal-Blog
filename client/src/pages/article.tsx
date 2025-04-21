@@ -62,7 +62,7 @@ export default function Article() {
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbLink href={location} isCurrentPage>{article.title}</BreadcrumbLink>
+                <BreadcrumbLink href={location}>{article.title}</BreadcrumbLink>
               </BreadcrumbItem>
             </>
           ) : (
