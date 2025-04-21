@@ -3,10 +3,11 @@ import Layout from "@/components/layout/layout";
 import Home from "@/pages/home";
 import Article from "@/pages/article";
 import Category from "@/pages/category";
-import Tools, { ToolsPageProps } from "@/pages/tools";
+import Tools from "@/pages/tools";
 import Search from "@/pages/search";
 import About from "@/pages/about";
 import NotFound from "@/pages/not-found";
+import { ThemeProvider, CategoryProvider } from "@/lib/context";
 
 // Wrapper component to handle passing toolSlug from route params
 const ToolsWrapper = (props: RouteComponentProps<{ slug?: string }>) => {
@@ -30,7 +31,16 @@ function Router() {
 }
 
 function App() {
-  return <Layout><Router /></Layout>;
+  // Directly wrap our Layout in ThemeProvider and CategoryProvider
+  return (
+    <ThemeProvider>
+      <CategoryProvider>
+        <Layout>
+          <Router />
+        </Layout>
+      </CategoryProvider>
+    </ThemeProvider>
+  );
 }
 
 export default App;

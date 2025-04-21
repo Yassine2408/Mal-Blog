@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Link } from 'wouter';
+import { Link, RouteComponentProps } from 'wouter';
 import Layout from '@/components/layout/layout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -553,7 +553,11 @@ function BudgetPlanner() {
   );
 }
 
-export default function ToolsPage({ toolSlug }: ToolsPageProps) {
+// We'll modify the ToolsPage component to make it compatible with both direct props and 
+// Wouter route parameters
+export default function ToolsPage(props: ToolsPageProps | RouteComponentProps<{ slug?: string }>) {
+  // Extract toolSlug whether it comes directly or from route params
+  const toolSlug = 'params' in props ? props.params.slug : props.toolSlug;
   const { data: tools, isLoading } = useQuery<Tool[]>({
     queryKey: ['/api/tools'],
   });
