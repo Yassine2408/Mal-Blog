@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Link, RouteComponentProps } from 'wouter';
-import Layout from '@/components/layout/layout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
@@ -315,23 +314,24 @@ function BudgetPlanner() {
   const [income, setIncome] = useState(10000);
   const [expenses, setExpenses] = useState({
     housing: 3000,
-    food: 1500,
-    transportation: 800,
+    food: 2000,
+    transport: 1000,
     utilities: 500,
-    health: 400,
-    entertainment: 600,
+    entertainment: 500,
     savings: 1000,
     other: 500
   });
   
-  const totalExpenses = Object.values(expenses).reduce((sum, value) => sum + value, 0);
+  const totalExpenses = Object.values(expenses).reduce((a, b) => a + b, 0);
   const balance = income - totalExpenses;
-  const savingsRate = (expenses.savings / income) * 100;
   
-  const handleExpenseChange = (category: keyof typeof expenses, value: number) => {
-    setExpenses(prev => ({ ...prev, [category]: value }));
+  const handleExpenseChange = (category: string, value: number) => {
+    setExpenses(prev => ({
+      ...prev,
+      [category]: value
+    }));
   };
-  
+
   return (
     <Card>
       <CardHeader>
@@ -400,15 +400,15 @@ function BudgetPlanner() {
               <div className="flex items-center justify-between">
                 <label className="text-sm">المواصلات</label>
                 <span className="text-xs text-gray-500">
-                  {((expenses.transportation / income) * 100).toFixed(1)}%
+                  {((expenses.transport / income) * 100).toFixed(1)}%
                 </span>
               </div>
               <div className="flex items-center space-x-4 space-x-reverse">
                 <Input
                   type="number"
                   min="0"
-                  value={expenses.transportation}
-                  onChange={(e) => handleExpenseChange('transportation', Number(e.target.value))}
+                  value={expenses.transport}
+                  onChange={(e) => handleExpenseChange('transport', Number(e.target.value))}
                   className="flex-1"
                 />
                 <span className="text-sm font-medium">ريال</span>
@@ -417,7 +417,7 @@ function BudgetPlanner() {
             
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <label className="text-sm">المرافق (كهرباء، ماء، إنترنت)</label>
+                <label className="text-sm">المرافق والفواتير</label>
                 <span className="text-xs text-gray-500">
                   {((expenses.utilities / income) * 100).toFixed(1)}%
                 </span>
@@ -428,25 +428,6 @@ function BudgetPlanner() {
                   min="0"
                   value={expenses.utilities}
                   onChange={(e) => handleExpenseChange('utilities', Number(e.target.value))}
-                  className="flex-1"
-                />
-                <span className="text-sm font-medium">ريال</span>
-              </div>
-            </div>
-            
-            <div className="space-y-2">
-              <div className="flex items-center justify-between">
-                <label className="text-sm">الصحة</label>
-                <span className="text-xs text-gray-500">
-                  {((expenses.health / income) * 100).toFixed(1)}%
-                </span>
-              </div>
-              <div className="flex items-center space-x-4 space-x-reverse">
-                <Input
-                  type="number"
-                  min="0"
-                  value={expenses.health}
-                  onChange={(e) => handleExpenseChange('health', Number(e.target.value))}
                   className="flex-1"
                 />
                 <span className="text-sm font-medium">ريال</span>
@@ -513,39 +494,26 @@ function BudgetPlanner() {
         </div>
         
         <div className="pt-4 space-y-4">
+          <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+            <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">الرصيد المتبقي</h3>
+            <p className={`text-2xl font-bold ${balance >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
+              {balance.toLocaleString('ar-SA', { maximumFractionDigits: 2 })} ريال
+            </p>
+          </div>
+          
           <div className="grid grid-cols-2 gap-4">
             <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
               <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">إجمالي المصاريف</h3>
               <p className="text-lg font-bold text-gray-900 dark:text-white">
-                {totalExpenses.toLocaleString('ar-SA')} ريال
+                {totalExpenses.toLocaleString('ar-SA', { maximumFractionDigits: 2 })} ريال
               </p>
             </div>
-            <div className={`p-4 rounded-lg ${
-              balance >= 0 
-                ? 'bg-green-50 dark:bg-green-900/20' 
-                : 'bg-red-50 dark:bg-red-900/20'
-            }`}>
-              <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">المتبقي</h3>
-              <p className={`text-lg font-bold ${
-                balance >= 0 
-                  ? 'text-green-600 dark:text-green-400' 
-                  : 'text-red-600 dark:text-red-400'
-              }`}>
-                {balance.toLocaleString('ar-SA')} ريال
+            <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+              <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">نسبة المصاريف من الدخل</h3>
+              <p className="text-lg font-bold text-gray-900 dark:text-white">
+                {((totalExpenses / income) * 100).toFixed(1)}%
               </p>
             </div>
-          </div>
-          
-          <div className="bg-primary/10 dark:bg-primary-dark/20 p-4 rounded-lg">
-            <h3 className="text-sm font-medium text-primary dark:text-secondary mb-1">نسبة التوفير من الدخل</h3>
-            <p className="text-2xl font-bold text-primary dark:text-secondary">
-              {savingsRate.toFixed(1)}%
-            </p>
-            {savingsRate < 10 && (
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
-                نوصي بتوفير 10-20% من الدخل الشهري على الأقل
-              </p>
-            )}
           </div>
         </div>
       </CardContent>
@@ -579,23 +547,22 @@ export default function ToolsPage(props: ToolsPageProps | RouteComponentProps<{ 
   };
 
   return (
-    <Layout>
+    <div>
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <header className="mb-12 text-center">
           <h1 className="text-3xl md:text-4xl font-almarai font-bold mb-4">
             الحاسبات المالية
           </h1>
-          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            أدوات تساعدك على التخطيط المالي واتخاذ قرارات استثمارية أفضل. استخدم هذه الحاسبات لتنظيم مصاريفك وتحقيق أهدافك المالية.
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            أدوات مجانية لمساعدتك في اتخاذ قرارات مالية أفضل وتخطيط مستقبلك المالي
           </p>
         </header>
 
         {isLoading ? (
-          <div className="space-y-8">
-            <Skeleton className="h-12 w-full" />
-            <Skeleton className="h-96 w-full" />
+          <div className="grid grid-cols-1 gap-8">
+            <Skeleton className="h-[500px] w-full rounded-xl" />
           </div>
-        ) : (
+        ) : tools && tools.length > 0 ? (
           <Tabs defaultValue={getDefaultTab()} className="w-full">
             <TabsList className="grid w-full grid-cols-3 mb-8">
               <TabsTrigger value="loan-calculator" className="flex items-center gap-2">
@@ -621,6 +588,13 @@ export default function ToolsPage(props: ToolsPageProps | RouteComponentProps<{ 
               <BudgetPlanner />
             </TabsContent>
           </Tabs>
+        ) : (
+          <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+            <h3 className="text-lg font-medium mb-2">الأدوات غير متوفرة حالياً</h3>
+            <p className="text-gray-500 dark:text-gray-400 mb-6">
+              يرجى المحاولة مرة أخرى لاحقاً
+            </p>
+          </div>
         )}
 
         <div className="mt-16 text-center">
@@ -647,6 +621,6 @@ export default function ToolsPage(props: ToolsPageProps | RouteComponentProps<{ 
           </div>
         </div>
       </div>
-    </Layout>
+    </div>
   );
 }
