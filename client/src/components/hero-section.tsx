@@ -21,9 +21,9 @@ export default function HeroSection() {
       : null;
 
   return (
-    <section className="relative py-12 overflow-hidden bg-gradient-to-r from-primary to-accent">
+    <section className="relative min-h-[500px] flex items-center py-16 overflow-hidden bg-gradient-to-r from-primary to-accent">
       <div 
-        className="absolute inset-0 z-0 opacity-20"
+        className="absolute inset-0 z-0 opacity-10"
         style={{
           backgroundImage: "url('/hero-bg.jpg')",
           backgroundSize: 'cover',
@@ -31,7 +31,7 @@ export default function HeroSection() {
           backgroundRepeat: 'no-repeat'
         }}
       />
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {isLoading ? (
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
             <div className="lg:col-span-3 space-y-6">

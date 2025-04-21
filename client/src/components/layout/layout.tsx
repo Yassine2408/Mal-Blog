@@ -14,7 +14,7 @@ export default function Layout({
   hideFooter = false 
 }: LayoutProps) {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900">
       <Header transparent={transparentHeader} />
       <main className="flex-grow">
         {children}
