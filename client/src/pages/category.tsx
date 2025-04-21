@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
-import Layout from '@/components/layout/layout';
 import CategoryNav from '@/components/category-nav';
 import ArticleCard from '@/components/article-card';
 import { useCategory } from '@/lib/context';
@@ -45,7 +44,7 @@ export default function CategoryPage() {
   };
 
   return (
-    <Layout>
+    <div>
       <CategoryNav />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -105,6 +104,6 @@ export default function CategoryPage() {
           </div>
         )}
       </div>
-    </Layout>
+    </div>
   );
 }
